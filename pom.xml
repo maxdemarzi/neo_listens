@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.maxdemarzi</groupId>
+    <artifactId>triggers</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <neo4j.version>2.2.0</neo4j.version>
+    </properties>
+
+    <dependencies>
+    <dependency>
+        <groupId>org.neo4j</groupId>
+        <artifactId>neo4j</artifactId>
+        <version>${neo4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.neo4j</groupId>
+        <artifactId>neo4j-kernel</artifactId>
+        <type>test-jar</type>
+        <version>${neo4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.neo4j</groupId>
+        <artifactId>server-api</artifactId>
+        <version>${neo4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.neo4j.app</groupId>
+        <artifactId>neo4j-server</artifactId>
+        <version>${neo4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.neo4j.app</groupId>
+        <artifactId>neo4j-server</artifactId>
+        <version>${neo4j.version}</version>
+        <type>test-jar</type>
+    </dependency>
+    <dependency>
+        <groupId>org.neo4j</groupId>
+        <artifactId>neo4j-io</artifactId>
+        <type>test-jar</type>
+        <version>${neo4j.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.9</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.jersey</groupId>
+        <artifactId>jersey-client</artifactId>
+        <version>1.9</version>
+    </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
