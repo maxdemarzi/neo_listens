@@ -37,8 +37,8 @@ Sample Event Listener / Triggers
 
 5. You should see:
 
-        A new Suspect has been created in the System!
-        A new direct relationship to a Suspect has been created in the System!
-        A new indirect relationship to a Suspect has been created in the System!
-        A new Suspect has been identified in the System!
-        
+        A new Suspect has been created!
+        A new direct relationship to a Suspect has been created!
+        A new indirect relationship to a Suspect has been created!
+        A new Suspect has been identified!
+

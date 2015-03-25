@@ -24,13 +24,14 @@ public class SuspectRunnable implements Runnable {
             for (Node node : td.createdNodes()) {
                 if (node.hasLabel(Labels.Suspect)) {
                     suspects.add(node);
-                    System.out.println("A new Suspect has been created in the System!");
+                    //GmailSender.sendEmail("maxdemarzi@gmail.com", "A new Suspect has been created in the System!", "boo-yeah");
+                    System.out.println("A new Suspect has been created!");
                 }
             }
 
             for (LabelEntry labelEntry : td.assignedLabels()) {
                 if (labelEntry.label().equals(Labels.Suspect) && !suspects.contains(labelEntry.node())) {
-                    System.out.println("A new Suspect has been identified in the System!");
+                    System.out.println("A new Suspect has been identified!");
                     suspects.add(labelEntry.node());
                 }
             }
@@ -39,13 +40,13 @@ public class SuspectRunnable implements Runnable {
                 if (relationship.isType(RelationshipTypes.KNOWS)) {
                     for (Node user : relationship.getNodes()) {
                         if (user.hasLabel(Labels.Suspect)) {
-                            System.out.println("A new direct relationship to a Suspect has been created in the System!");
+                            System.out.println("A new direct relationship to a Suspect has been created!");
                         }
 
                         for (Relationship knows : user.getRelationships(Direction.BOTH, RelationshipTypes.KNOWS)) {
                             Node otherUser = knows.getOtherNode(user);
                             if (otherUser.hasLabel(Labels.Suspect) && !otherUser.equals(relationship.getOtherNode(user))) {
-                                System.out.println("A new indirect relationship to a Suspect has been created in the System!");
+                                System.out.println("A new indirect relationship to a Suspect has been created!");
                             }
                         }
                     }
