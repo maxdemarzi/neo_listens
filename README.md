@@ -14,19 +14,31 @@ Sample Event Listener / Triggers
 
 4. Run these queries, tailing the graph.db/log/console.log file:
 
-    CREATE (max:User {name:"Max"}) RETURN max;
-    CREATE (al:Suspect {name:"Al Capone"}) RETURN al;
-    MATCH (max:User),(al:Suspect)
-    WHERE max.name = "Max" AND al.name = "Al Capone"
-    CREATE (max)-[r:KNOWS]->(al)
-    RETURN r;
-    CREATE (helene:User {name:"Helene"}) RETURN helene;
-    MATCH (max:User),(helene:User)
-    WHERE max.name = "Max" AND helene.name = "Helene"
-    CREATE (max)-[r:KNOWS]->(al)
-    RETURN r;
-    MATCH (helene:User)
-    WHERE helene.name = "Helene"
-    SET helene :Suspect
-    RETURN helene;
+        CREATE (max:User {name:"Max"}) RETURN max;
 
+        CREATE (al:Suspect {name:"Al Capone"}) RETURN al;
+
+        MATCH (max:User),(al:Suspect)
+        WHERE max.name = "Max" AND al.name = "Al Capone"
+        CREATE (max)-[r:KNOWS]->(al)
+        RETURN r;
+
+        CREATE (monica:User {name:"Monica"}) RETURN monica;
+
+        MATCH (max:User),(monica:User)
+        WHERE max.name = "Max" AND monica.name = "Monica"
+        CREATE (max)-[r:KNOWS]->(monica)
+        RETURN r;
+
+        MATCH (monica:User)
+        WHERE monica.name = "Monica"
+        SET monica :Suspect
+        RETURN monica;
+
+5. You should see:
+
+        A new Suspect has been created in the System!
+        A new direct relationship to a Suspect has been created in the System!
+        A new indirect relationship to a Suspect has been created in the System!
+        A new Suspect has been identified in the System!
+        
