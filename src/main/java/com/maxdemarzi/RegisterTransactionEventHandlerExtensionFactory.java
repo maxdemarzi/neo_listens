@@ -2,6 +2,7 @@ package com.maxdemarzi;
 
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.kernel.extension.KernelExtensionFactory;
+import org.neo4j.kernel.impl.spi.KernelContext;
 import org.neo4j.kernel.lifecycle.Lifecycle;
 import org.neo4j.kernel.lifecycle.LifecycleAdapter;
 
@@ -9,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class RegisterTransactionEventHandlerExtensionFactory extends KernelExtensionFactory<RegisterTransactionEventHandlerExtensionFactory.Dependencies> {
-
+    
     public interface Dependencies {
         GraphDatabaseService getGraphDatabaseService();
     }
@@ -19,7 +20,7 @@ public class RegisterTransactionEventHandlerExtensionFactory extends KernelExten
     }
 
     @Override
-    public Lifecycle newKernelExtension(final Dependencies dependencies) throws Throwable {
+    public Lifecycle newInstance(KernelContext kernelContext, final Dependencies dependencies) throws Throwable {
         return new LifecycleAdapter() {
 
             private MyTransactionEventHandler handler;
