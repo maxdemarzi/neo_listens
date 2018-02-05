@@ -30,7 +30,7 @@ public class SuspectRunnable implements Runnable {
             }
 
             for (LabelEntry labelEntry : td.assignedLabels()) {
-                if (labelEntry.label().equals(Labels.Suspect) && !suspects.contains(labelEntry.node())) {
+                if (labelEntry.label().name().equals(Labels.Suspect.name()) && !suspects.contains(labelEntry.node())) {
                     System.out.println("A new Suspect has been identified!");
                     suspects.add(labelEntry.node());
                 }
