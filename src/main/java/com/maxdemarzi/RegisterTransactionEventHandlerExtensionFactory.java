@@ -12,21 +12,21 @@ import java.util.concurrent.Executors;
 public class RegisterTransactionEventHandlerExtensionFactory extends KernelExtensionFactory<RegisterTransactionEventHandlerExtensionFactory.Dependencies> {
 
     @Override
-    public Lifecycle newInstance(KernelContext kernelContext, final Dependencies dependencies) throws Throwable {
+    public Lifecycle newInstance(KernelContext kernelContext, final Dependencies dependencies) {
         return new LifecycleAdapter() {
 
             private MyTransactionEventHandler handler;
             private ExecutorService executor;
 
             @Override
-            public void start() throws Throwable {
+            public void start() {
                 executor = Executors.newFixedThreadPool(2);
                 handler = new MyTransactionEventHandler(dependencies.getGraphDatabaseService(), executor);
                 dependencies.getGraphDatabaseService().registerTransactionEventHandler(handler);
             }
 
             @Override
-            public void shutdown() throws Throwable {
+            public void shutdown() {
                 executor.shutdown();
                 dependencies.getGraphDatabaseService().unregisterTransactionEventHandler(handler);
             }
