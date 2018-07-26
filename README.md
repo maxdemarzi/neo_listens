@@ -12,7 +12,7 @@ Sample Event Listener / Triggers
 
 3. Start your Neo4j Server
 
-4. Run these queries, tailing the graph.db/log/console.log file:
+4. Run these queries, tailing the graph.db/log/debug.log file:
 
         CREATE (max:User {name:"Max"}) RETURN max;
 
