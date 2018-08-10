@@ -3,6 +3,8 @@ package com.maxdemarzi;
 import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.event.LabelEntry;
 import org.neo4j.graphdb.event.TransactionData;
+import org.neo4j.kernel.impl.logging.LogService;
+import org.neo4j.logging.Log;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,10 +13,12 @@ public class SuspectRunnable implements Runnable {
 
     private static TransactionData td;
     private static GraphDatabaseService db;
+    private Log log;
 
-    public SuspectRunnable (TransactionData transactionData, GraphDatabaseService graphDatabaseService) {
+    public SuspectRunnable (TransactionData transactionData, GraphDatabaseService graphDatabaseService, LogService logsvc) {
         td = transactionData;
         db = graphDatabaseService;
+        log = logsvc.getUserLog(SuspectRunnable.class);
     }
 
     @Override
@@ -25,13 +29,13 @@ public class SuspectRunnable implements Runnable {
                 if (node.hasLabel(Labels.Suspect)) {
                     suspects.add(node);
                     //GmailSender.sendEmail("maxdemarzi@gmail.com", "A new Suspect has been created in the System!", "boo-yeah");
-                    System.out.println("A new Suspect has been created!");
+                    log.info("A new Suspect has been created!");
                 }
             }
 
             for (LabelEntry labelEntry : td.assignedLabels()) {
                 if (labelEntry.label().name().equals(Labels.Suspect.name()) && !suspects.contains(labelEntry.node())) {
-                    System.out.println("A new Suspect has been identified!");
+                    log.info("A new Suspect has been identified!");
                     suspects.add(labelEntry.node());
                 }
             }
