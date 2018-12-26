@@ -1,6 +1,7 @@
 package com.maxdemarzi;
 
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.kernel.extension.ExtensionType;
 import org.neo4j.kernel.extension.KernelExtensionFactory;
 import org.neo4j.kernel.impl.spi.KernelContext;
 import org.neo4j.kernel.lifecycle.Lifecycle;
@@ -45,7 +46,7 @@ public class RegisterTransactionEventHandlerExtensionFactory extends KernelExten
     }
 
     public RegisterTransactionEventHandlerExtensionFactory() {
-        super("registerTransactionEventHandler");
+        super(ExtensionType.DATABASE, "registerTransactionEventHandler");
         this.logger = null;
     }
 
