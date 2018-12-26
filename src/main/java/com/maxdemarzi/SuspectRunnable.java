@@ -3,7 +3,7 @@ package com.maxdemarzi;
 import org.neo4j.graphdb.*;
 import org.neo4j.graphdb.event.LabelEntry;
 import org.neo4j.graphdb.event.TransactionData;
-import org.neo4j.kernel.impl.logging.LogService;
+import org.neo4j.logging.internal.LogService;
 import org.neo4j.logging.Log;
 
 import java.util.HashSet;

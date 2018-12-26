@@ -9,13 +9,23 @@
     <version>1.0</version>
 
     <properties>
-        <neo4j.version>3.4.4</neo4j.version>
+        <neo4j.version>3.5.1</neo4j.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-kernel</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-logging</artifactId>
             <version>${neo4j.version}</version>
         </dependency>
         <dependency>

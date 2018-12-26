@@ -5,7 +5,7 @@ import org.neo4j.kernel.extension.KernelExtensionFactory;
 import org.neo4j.kernel.impl.spi.KernelContext;
 import org.neo4j.kernel.lifecycle.Lifecycle;
 import org.neo4j.kernel.lifecycle.LifecycleAdapter;
-import org.neo4j.kernel.impl.logging.LogService;
+import org.neo4j.logging.internal.LogService;
 import org.neo4j.logging.Log;
 
 import java.util.concurrent.ExecutorService;
