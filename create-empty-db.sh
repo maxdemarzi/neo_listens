@@ -14,7 +14,7 @@ docker run -d --name neo4j-empty --rm \
         --env=NEO4J_dbms_memory_heap_max__size=4G \
 	--env=NEO4J_AUTH=neo4j/admin \
 	--env=NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
-        -v /Users/davidallen/hax/neo_listens/target:/plugins \
+        -v $CWD/target:/plugins \
         --env=NEO4J_dbms_security_procedures_unrestricted="com.maxdemarzi.*" \
 	-t $NEO4J
 
