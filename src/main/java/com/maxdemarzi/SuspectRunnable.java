@@ -44,13 +44,13 @@ public class SuspectRunnable implements Runnable {
                 if (relationship.isType(RelationshipTypes.KNOWS)) {
                     for (Node user : relationship.getNodes()) {
                         if (user.hasLabel(Labels.Suspect)) {
-                            System.out.println("A new direct relationship to a Suspect has been created!");
+                            log.info("A new direct relationship to a Suspect has been created!");
                         }
 
                         for (Relationship knows : user.getRelationships(Direction.BOTH, RelationshipTypes.KNOWS)) {
                             Node otherUser = knows.getOtherNode(user);
                             if (otherUser.hasLabel(Labels.Suspect) && !otherUser.equals(relationship.getOtherNode(user))) {
-                                System.out.println("A new indirect relationship to a Suspect has been created!");
+                                log.info("A new indirect relationship to a Suspect has been created!");
                             }
                         }
                     }
